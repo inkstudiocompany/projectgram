@@ -8,7 +8,9 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-    	$securityGram = $this->get('instagram_security');
+    	/*$securityGram = $this->get('instagram_security');
+
+    	var_dump($securityGram); die();
 
 		$userId = $securityGram->getUserId('inkstudiocompany');
 
@@ -19,7 +21,11 @@ class DefaultController extends Controller
 
 		$posts = $securityGram->getPosts($userId);
 		
-		var_dump($userId, $posts);
+		var_dump($userId, $posts);*/
+
+		$instagram = $this->get('instagram');
+
+		var_dump($instagram);
 		
         return $this->render('InkStudioProjectgramBundle:Default:index.html.twig');
     }

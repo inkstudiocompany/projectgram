@@ -28,7 +28,8 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "instaphp/instaphp": "2.*",
-        "ollieltd/instagram-bundle": "dev-master"
+        "ollieltd/instagram-bundle": "dev-master",
+        "cosenary/instagram": "^2.3"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

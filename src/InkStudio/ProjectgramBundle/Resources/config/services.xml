@@ -18,5 +18,7 @@
         <service id="instagram_security" class="InkStudio\ProjectgramBundle\Services\Instagram\InstagramSecurity">
             <argument type="service" id="instaphp" />
         </service>
+
+        <service id="instagram" class="InkStudio\ProjectgramBundle\Services\Instagram\InstagramService"></service>
     </services>
 </container>
