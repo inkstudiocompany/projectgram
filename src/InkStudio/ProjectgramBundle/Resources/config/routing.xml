@@ -7,4 +7,12 @@
     <route id="ink_studio_projectgram_homepage" path="/">
         <default key="_controller">InkStudioProjectgramBundle:Default:index</default>
     </route>
+
+    <route id="ink_studio_projectgram_callback" path="/callback">
+        <default key="_controller">InkStudioProjectgramBundle:Default:callback</default>
+    </route>
+
+    <route id="ink_studio_projectgram_callback" path="/callback_token">
+        <default key="_controller">InkStudioProjectgramBundle:Default:token</default>
+    </route>
 </routes>

@@ -2,6 +2,6 @@ ink_studio_projectgram:
     resource: "@InkStudioProjectgramBundle/Resources/config/routing.xml"
     prefix:   /
 
-OhInstagramBundle:
-    resource: "OhInstagramBundle/config/routing.yml"
-    prefix:   /
+#OhInstagramBundle:
+#    resource: "OhInstagramBundle/config/routing.yml"
+#    prefix:   /

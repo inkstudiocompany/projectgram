@@ -68,9 +68,10 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+
 #Instagram
-oh_instagram:
-    instaphp:
-        config:
-            client_id: %instagram_api_client_id%
-            client_secret: %instagram_api_client_secret%
+#oh_instagram:
+#    instaphp:
+#        config:
+#            client_id: %instagram_api_client_id%
+#            client_secret: %instagram_api_client_secret%

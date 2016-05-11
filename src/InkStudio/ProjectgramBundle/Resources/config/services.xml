@@ -15,10 +15,15 @@
     -->
 
     <services>
-        <service id="instagram_security" class="InkStudio\ProjectgramBundle\Services\Instagram\InstagramSecurity">
+        <!--<service id="instagram_security" class="InkStudio\ProjectgramBundle\Services\Instagram\InstagramSecurity">
             <argument type="service" id="instaphp" />
-        </service>
+        </service>-->
 
-        <service id="instagram" class="InkStudio\ProjectgramBundle\Services\Instagram\InstagramService"></service>
+        <service id="instagram" class="InkStudio\ProjectgramBundle\Services\Instagram\InstagramService">
+            <argument>%instagram_client_id%</argument>
+            <argument>%instagram_client_secret%</argument>
+            <argument>%instagram_client_callback%</argument>
+            <argument>%instagram_client_implicit_callback%</argument>
+        </service>
     </services>
 </container>
