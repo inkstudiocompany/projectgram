@@ -20,6 +20,18 @@
         }
 
         /**
+         * Get user recent media
+         *
+         * @param integer [optional] $id        Instagram user ID
+         * @param integer [optional] $limit     Limit of returned results
+         * @return mixed
+         */
+        public function getUserMedia($id = 'self', $limit = 0, $max_id = 0) {
+            return $this->_makeCall('users/' . $id . '/media/recent', ($id === 'self'),
+                array('count' => $limit, 'max_id' => $max_id));
+        }
+
+        /**
          * API Implicit Callback Setter
          *
          * @param string $implicitApiCallback

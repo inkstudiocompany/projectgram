@@ -19,5 +19,7 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     # Instagram API Parameters
-    instagram_api_client_id: bb5157e5603d4ea698c19c75255ce56d
-    instagram_api_client_secret: 60a20fc9f7cd4285ab24a3c895a1e729
+    instagram_client_id: 83efd5daeebf49feb292b90c7aa68f00
+    instagram_client_secret: 351e202f13fc40f79d174bd86dc8a813
+    instagram_client_callback: http://testgram.com/app_dev.php/callback
+    instagram_client_implicit_callback: http://testgram.com/app_dev.php/callback_token

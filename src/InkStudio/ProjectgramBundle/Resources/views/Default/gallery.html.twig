@@ -1,0 +1,13 @@
+{{ dump(content) }}
+
+{% for media in content.data %}
+    <div>
+        {% if media.caption.text is defined%}
+        {{ dump(media.caption.text) }}
+        {% endif %}
+
+        <img src="{{ media.images.low_resolution.url }}" />
+        <img src="{{ media.images.standard_resolution.url }}" />
+
+    </div>
+{% endfor %}

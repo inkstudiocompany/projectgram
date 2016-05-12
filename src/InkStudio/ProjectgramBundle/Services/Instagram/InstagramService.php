@@ -27,22 +27,21 @@
 			
 		}
 
-        public function getUserStatus()
+        public function getUser()
         {
-            $this->instagram_app->getAuthToken();
-            return $this->instagram_app->getAccessToken();
+            return $this->instagram_app->getUser();
         }
 
         public function getLoginUrl()
         {
-            return $this->instagram_app->getLoginUrl(['basic']);
+            return $this->instagram_app->getLoginUrl(['basic', 'public_content']);
         }
 
         public function getAuth($code)
         {
-            $data = $this->instagram_app->getOAuthToken($code, '177738431.83efd5d.3936a1e6f1ed4305ab1552c3f66a3aaf');
-var_dump($data); die();
-            if (false === isset($data) && 400 !== $data->code) {
+            $data = $this->instagram_app->getOAuthToken($code);
+
+            if (false === property_exists($data, 'code')) {
                 $session = new \stdClass();
                 $session->access_token = $data->access_token;
                 $session->user = $data->user;
@@ -54,9 +53,26 @@ var_dump($data); die();
             return $session;
         }
 
-        public function setToken($token)
+        public function getMedia($max_id = 0)
         {
+            $pictures = false;
+            $this->instagram_app->setSignedHeader(true);
+            $content = $this->instagram_app->getUserMedia('self', 10, $max_id);
 
+            if (!$content) {
+                return false;
+            }
+
+            if (200 !== $content->meta->code) {
+                return false;
+            }
+
+            return $content;
+        }
+
+        public function setAccessToken($accessToken)
+        {
+            return $this->instagram_app->setAccessToken($accessToken);
         }
 	}
 ?>
