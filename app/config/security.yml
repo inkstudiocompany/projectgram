@@ -15,6 +15,12 @@ security:
 
         main:
             anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
             # activate different ways to authenticate
 
             # http_basic: ~

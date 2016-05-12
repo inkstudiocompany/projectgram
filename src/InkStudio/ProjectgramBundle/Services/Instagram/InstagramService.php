@@ -1,9 +1,8 @@
 <?php
 	namespace InkStudio\ProjectgramBundle\Services\Instagram;
 
-	use InkStudio\ProjectgramBundle\Services\Instagram\Instagram;
-
-	class InstagramService {
+    class InstagramService
+    {
 
 		private $instagram_app;
 

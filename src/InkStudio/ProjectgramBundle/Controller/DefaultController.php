@@ -91,4 +91,9 @@ class DefaultController extends Controller
 
         var_dump($content);
     }
+
+    public function testAction()
+    {
+        echo 'hello!';
+    }
 }
