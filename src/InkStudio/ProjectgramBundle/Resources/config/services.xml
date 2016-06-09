@@ -24,6 +24,7 @@
             <argument>%instagram_client_secret%</argument>
             <argument>%instagram_client_callback%</argument>
             <argument>%instagram_client_implicit_callback%</argument>
+            <argument>%instagram_scopes%</argument>
         </service>
     </services>
 </container>

@@ -5,9 +5,7 @@ namespace InkStudio\ProjectgramBundle\Controller;
 use InkStudio\ProjectgramBundle\Services\Instagram\InstagramService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Cookie;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -16,8 +14,8 @@ class DefaultController extends Controller
     public function indexAction (Request $request)
     {
         $cookie = false;
-	    if (true === $request->cookies->has('testgram')) {
-		    $cookie = $request->cookies->get('testgram');
+	    if (true === $request->cookies->has($this->getParameter('app_cookie'))) {
+		    $cookie = $request->cookies->get($this->getParameter('app_cookie'));
 	    }
 
 	    if (false === $cookie) {
@@ -27,7 +25,9 @@ class DefaultController extends Controller
 		    return $this->redirect($instagram->getLoginUrl());
 	    }
 
-        return $this->render('InkStudioProjectgramBundle:Default:index.html.twig');
+        $response = $this->redirectToRoute('ink_studio_projectgram_inicio');
+
+        return $response;
     }
 
     public function callbackAction (Request $request)
@@ -41,37 +41,34 @@ class DefaultController extends Controller
         /** @var InstagramService $instagram */
         $instagram = $this->get('instagram');
 
-        $tokenAuth = $instagram->getAuth($code);
+        $tokenOAuth = $instagram->getOAuth($code);
 
-        var_dump($tokenAuth); die();
+        if (false === $tokenOAuth) {
+            var_dump('Mierda');
+        }
 
-        $response = new Response();
-        $cookie = new Cookie('testgram', $tokenAuth);
+        $cookie = new Cookie('TESTGRAM', $tokenOAuth->access_token);
+        $response = $this->redirectToRoute('ink_studio_projectgram_inicio');
 
         $response->headers->setCookie($cookie);
 
         return $response;
     }
 
-    public function tokenAction (Request $request)
+    public function homeAction(Request $request)
     {
-        $token = '177738431.83efd5d.3936a1e6f1ed4305ab1552c3f66a3aaf';
-
+        $OAuthToken = $request->cookies->get($this->getParameter('app_cookie'));
         /** @var InstagramService $instagram */
         $instagram = $this->get('instagram');
 
-        $code = $request->get('code');
+        return $this->picturesAction($OAuthToken, 5);
 
-        if (false === $code || null === $code) {
-            return false;
-        }
+        $instagram->setAccessToken($OAuthToken);
+    }
 
+    public function tokenAction (Request $request)
+    {
 
-        $instagram = $this->get('instagram');
-
-        $tokenAuth = $instagram->getAuth($code);
-
-        var_dump($instagam->getUserStatus());
     }
 
     public function picturesAction($accessToken, $max_id = 0)

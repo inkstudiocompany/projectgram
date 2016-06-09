@@ -23,3 +23,6 @@ parameters:
     instagram_client_secret: 351e202f13fc40f79d174bd86dc8a813
     instagram_client_callback: http://testgram.com/app_dev.php/callback
     instagram_client_implicit_callback: http://testgram.com/app_dev.php/callback_token
+    instagram_scopes:
+        - basic
+    app_cookie: 'TESTGRAM'
